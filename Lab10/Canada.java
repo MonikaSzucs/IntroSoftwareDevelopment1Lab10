@@ -4,9 +4,11 @@
  * @author  Joe Developer
  * @version 1.0
  */
+import java.util.ArrayList;
+
 public class Canada
 {
-    private ProvinceTerritory[] provinces;
+    private ArrayList<ProvinceTerritory> provinces;
 
     public final static int NUM_OF_PROVINCES    = 13;
     public final static int NO_SUCH_PROVINCE    = -1;
@@ -30,21 +32,22 @@ public class Canada
      */
     public Canada()
     {
-        provinces = new ProvinceTerritory[NUM_OF_PROVINCES] ;
+        provinces = new ArrayList<ProvinceTerritory>();
 
-        provinces[AB] = new ProvinceTerritory ("Alberta" , 3645257) ;
-        provinces[BC] = new ProvinceTerritory ("British Columbia" , 4400057);
-        provinces[MB] = new ProvinceTerritory ("Manitoba" , 1208268);
-        provinces[NB] = new ProvinceTerritory ("New Brunswick" , 751171);
-        provinces[NL] = new ProvinceTerritory ("Newfoundland and Labrador" , 514536);
-        provinces[NT] = new ProvinceTerritory ("Northwest Territories" , 41462);
-        provinces[NS] = new ProvinceTerritory ("Nova Scotia" , 921727);
-        provinces[NU] = new ProvinceTerritory ("Nunavut" , 31906);
-        provinces[ON] = new ProvinceTerritory ("Ontario" , 12851821);
-        provinces[PE] = new ProvinceTerritory ("Prince Edward Island" , 140204);
-        provinces[QC] = new ProvinceTerritory ("Quebec" , 7903001);
-        provinces[SK] = new ProvinceTerritory ("Saskatchewan" , 1033381);
-        provinces[YT] = new ProvinceTerritory ("Yukon", 33897 );
+        provinces.add(new ProvinceTerritory("Alberta" , 3645257));
+        provinces.add(new ProvinceTerritory("British Columbia" , 4400057));
+        provinces.add(new ProvinceTerritory("Manitoba" , 1208268));
+        provinces.add(new ProvinceTerritory("New Brunswick" , 751171));
+        provinces.add(new ProvinceTerritory("Newfoundland and Labrador" , 514536));
+        provinces.add(new ProvinceTerritory("Northwest Territories" , 41462));
+        provinces.add(new ProvinceTerritory("Nova Scotia" , 921727));
+        provinces.add(new ProvinceTerritory("Nunavut" , 31906));
+        provinces.add(new ProvinceTerritory("Ontario" , 12851821));
+        provinces.add(null);
+        provinces.add(new ProvinceTerritory("Prince Edward Island" , 140204));
+        provinces.add(new ProvinceTerritory("Quebec" , 7903001));
+        provinces.add(new ProvinceTerritory("Saskatchewan" , 1033381));
+        provinces.add(new ProvinceTerritory("Yukon", 33897));
     }  
 
     /** 
@@ -56,11 +59,15 @@ public class Canada
     {
         int totalPopulation = 0;
         int index = 0; 
-
-        while (index < provinces.length)
+        
+        
+        
+        for(ProvinceTerritory province: provinces)
         {
-            totalPopulation +=  provinces[index].getPopulation();
+            if(province !=null){
+            totalPopulation +=  province.getPopulation();
             index++;
+            }
         }
 
         return totalPopulation;
@@ -77,12 +84,12 @@ public class Canada
         String  smallestProvince = "";
         int     index = 0; 
 
-        while (index < provinces.length)
+        for(ProvinceTerritory province : provinces)
         {
-            if (provinces[index].getPopulation() < lowestPopulation)
+            if(province != null && province.getPopulation() < lowestPopulation)
             {
-                lowestPopulation = provinces[index].getPopulation();
-                smallestProvince = provinces[index].getName();
+                lowestPopulation = province.getPopulation();
+                smallestProvince = province.getName();
             }
             index++;
         }  
@@ -90,6 +97,30 @@ public class Canada
         return smallestProvince;
     }
 
+    /**
+     * Finds the province with the lowest population.
+     * 
+     * @return  Name of the province or territory with the lowest population
+     */
+    public String getHighestPopulation()
+    {
+        int     highestPopulation = Integer.MIN_VALUE;
+        String  largestProvince = "";
+        int     index = 0; 
+
+        for(ProvinceTerritory province : provinces)
+        {
+            if(province != null && province.getPopulation() > highestPopulation)
+            {
+                highestPopulation = province.getPopulation();
+                largestProvince = province.getName();
+            }
+            index++;
+        }  
+
+        return largestProvince;
+    }
+    
     /**
      * Gets the population of a specific province.
      * 
@@ -103,11 +134,11 @@ public class Canada
         if (province == null || province.equals(""))
             throw new IllegalArgumentException("Invalid Province");
             
-        while (index < provinces.length)
+        for(ProvinceTerritory prov : provinces)
         {
-            if (provinces[index].getName().equalsIgnoreCase(province))
+            if ( province != null && prov.getName().equalsIgnoreCase(province))
             {
-                return provinces[index].getPopulation();
+                return prov.getPopulation();
             }
             index++;
         }  
@@ -130,9 +161,9 @@ public class Canada
         boolean isProvinceInCanada = false;
         int index = 0;
 
-        while (index < provinces.length)
+        for(ProvinceTerritory province : provinces)
         {
-            if (provinces[index].getName().equalsIgnoreCase(name))
+            if ( province != null && province.getName().equalsIgnoreCase(name))
             {
                 isProvinceInCanada = true;
             }
@@ -159,9 +190,9 @@ public class Canada
         int numOfProvContainingString = 0;
         String[] containingString;
         
-        while (i < provinces.length)
+        for(ProvinceTerritory province : provinces)
         {
-            if (provinces[i].getName().toLowerCase().contains(substring.toLowerCase()))
+            if ( province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
             {
                 numOfProvContainingString++;
             }
@@ -177,11 +208,11 @@ public class Canada
         }
 
         i = 0 ;  
-        while (i < provinces.length)
+        for(ProvinceTerritory province : provinces)
         {
-            if (provinces[i].getName().toLowerCase().contains(substring.toLowerCase()))
+            if (province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
             {
-                containingString[j] = provinces[i].getName();
+                containingString[j] = province.getName();
                 j++;
             }
             i++;
@@ -207,9 +238,9 @@ public class Canada
         int numOfProvContainString = 0;
         ProvinceTerritory[] containString;
 
-        while (i < provinces.length)
+        for(ProvinceTerritory province : provinces)
         {
-            if (provinces[i].getName().toLowerCase().contains(substring.toLowerCase()))
+            if (province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
             {
                 numOfProvContainString++;
             }
@@ -225,11 +256,11 @@ public class Canada
         }
 
         i = 0 ;  
-        while (i < provinces.length)
+        for(ProvinceTerritory province : provinces)
         {
-            if (provinces[i].getName().toLowerCase().contains(substring.toLowerCase()))
+            if ( province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
             {
-                containString[j] = new ProvinceTerritory(provinces[i].getName() , provinces[i].getPopulation());
+                containString[j] = new ProvinceTerritory(province.getName() , province.getPopulation());
                 j++;
             }
             i++;
@@ -250,18 +281,18 @@ public class Canada
             throw new IllegalArgumentException("Invalid letter");
         }
             
-        int i = 0;
+        
         int j = 0;
         int numOfProvStartingWith = 0;
         String[] startingWithChar;
 
-        while (i < provinces.length)
+        for(ProvinceTerritory province : provinces)
         {
-            if (provinces[i].getName().toLowerCase().charAt(0) == Character.toLowerCase(letter))
+            if ( province != null && province.getName().toLowerCase().charAt(0) == Character.toLowerCase(letter))
             {
                 numOfProvStartingWith++;
             }
-            i++;
+            
         }
 
         if (numOfProvStartingWith > 0)
@@ -271,15 +302,15 @@ public class Canada
         else
             return null;
 
-        i = 0 ;  
-        while (i < provinces.length)
+        
+        for(ProvinceTerritory province : provinces)
         {
-            if (provinces[i].getName().toLowerCase().charAt(0) == Character.toLowerCase(letter))
+            if (province != null && province.getName().toLowerCase().charAt(0) == Character.toLowerCase(letter))
             {
-                startingWithChar[j] = provinces[i].getName();
+                startingWithChar[j] = province.getName();
                 j++;
             }
-            i++;
+            
         }
 
         return startingWithChar;
