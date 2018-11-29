@@ -212,8 +212,9 @@ public class Canada
         {
             if (province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
             {
-                containingString.add(province.getName());
-                j++;
+                ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(containingString));
+                //containingString.add(province.getName());
+                //j++;
             }
             i++;
         }
