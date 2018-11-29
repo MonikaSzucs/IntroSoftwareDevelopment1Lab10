@@ -179,7 +179,7 @@ public class Canada
      * @param   substring   Substring to search for in the name of province or territory
      * @return  Array of provinces or territories names with the substring in their names
      */
-    public String[] getProvincesWhoseNameContains(String substring)
+    public ProvinceTerritory[] getProvincesWhoseNameContains(String substring)
     {
         if (substring == null || substring.equals("")) {
             throw new IllegalArgumentException("Invalid string");
@@ -188,7 +188,7 @@ public class Canada
         int i = 0;
         int j = 0;
         int numOfProvContainingString = 0;
-        String[] containingString;
+        ProvinceTerritory[] containingString;
         
         for(ProvinceTerritory province : provinces)
         {
@@ -201,7 +201,7 @@ public class Canada
 
         if (numOfProvContainingString > 0)
         {
-            containingString = new String[numOfProvContainingString];
+            containingString = new ProvinceTerritory[numOfProvContainingString];
         }
         else {
             return null;
@@ -212,7 +212,7 @@ public class Canada
         {
             if (province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
             {
-                containingString[j] = province.getName();
+                containingString.add(province.getName());
                 j++;
             }
             i++;
