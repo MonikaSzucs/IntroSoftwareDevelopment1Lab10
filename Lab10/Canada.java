@@ -194,31 +194,18 @@ public class Canada
         {
             if ( province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
             {
-                numOfProvContainingString++;
+                ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(containingString));
             }
-            i++;
         }
 
-        if (numOfProvContainingString > 0)
+        if (arrayList.size() > 0)
         {
-            containingString = new ProvinceTerritory[numOfProvContainingString];
+            return containingString;
         }
         else {
             return null;
         }
-
-        i = 0 ;  
-        for(ProvinceTerritory province : provinces)
-        {
-            if (province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
-            {
-                ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(containingString));
-                //containingString.add(province.getName());
-                //j++;
-            }
-            i++;
-        }
-
+        
         return containingString;
     }
     
