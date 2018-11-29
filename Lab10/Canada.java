@@ -260,6 +260,8 @@ public class Canada
      * @param   letter  Letter by which province or territory name starts with
      * @return  Array containing the provinces or territories whose name start with a specific letter
      */
+    
+    /**
     public String[] getProvincesWhoseNameStartsWith(char letter)
     {
         if (letter == ' ' || letter == '\0') {
@@ -284,9 +286,9 @@ public class Canada
         {
             startingWithChar = new String[numOfProvStartingWith];
         }
-        else
+        else{
             return null;
-
+        }
         
         for(ProvinceTerritory province : provinces)
         {
@@ -300,7 +302,39 @@ public class Canada
 
         return startingWithChar;
     }
+    */
    
+    /**
+     * Gets all provinces that starts with the given letter.
+     * 
+     * @param   letter  Letter by which province or territory name starts with
+     * @return  Array containing the provinces or territories whose name start with a specific letter
+     */
+    public ArrayList<String> getProvincesWhoseNameStartsWith(char letter)
+    {
+        if (letter == ' ' || letter == '\0') {
+            throw new IllegalArgumentException("Invalid letter");
+        }
+            
+        ArrayList<String> prov = new ArrayList<>();
 
+        for(ProvinceTerritory province : provinces)
+        {
+            if ( province != null && province.getName().toLowerCase().charAt(0) == Character.toLowerCase(letter))
+            {
+                prov.add(province);
+            }
+            
+        }
+
+        if (prov.size() > 0)
+        {
+            return prov;
+        }
+        else{
+            return null;
+        }
+
+    }
 }
 
