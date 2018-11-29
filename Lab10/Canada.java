@@ -240,9 +240,9 @@ public class Canada
         {
             if (province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
             {
-                prov.add(province.getName());
+                prov.add(province);
             }
-
+            
         }        
         
         if (prov.size() > 0)
