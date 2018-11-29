@@ -233,7 +233,7 @@ public class Canada
             throw new IllegalArgumentException("Invalid string");
         }
         
-        ArrayList<String> prov = new ArrayList<>();
+        ArrayList<ProvinceTerritory> prov = new ArrayList<>();
         
 
         for(ProvinceTerritory province : provinces)
