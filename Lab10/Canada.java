@@ -185,16 +185,13 @@ public class Canada
             throw new IllegalArgumentException("Invalid string");
         }
         
-        int i = 0;
-        int j = 0;
-        int numOfProvContainingString = 0;
         ProvinceTerritory[] containingString;
         
         for(ProvinceTerritory province : provinces)
         {
             if ( province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
             {
-                ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(containingString));
+                ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(substring));
             }
         }
 
