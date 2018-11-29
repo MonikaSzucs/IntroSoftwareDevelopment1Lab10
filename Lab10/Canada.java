@@ -233,7 +233,7 @@ public class Canada
             throw new IllegalArgumentException("Invalid string");
         }
         
-        ArrayList<ProvinceTerritory> prov = new ArrayList<>();
+        ArrayList<String> prov = new ArrayList<>();
         
 
         for(ProvinceTerritory province : provinces)
@@ -242,8 +242,7 @@ public class Canada
             {
                 prov.add(province.getName());
             }
-            
-            
+
         }        
         
         if (prov.size() > 0)
