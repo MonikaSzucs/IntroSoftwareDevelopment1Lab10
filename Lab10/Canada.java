@@ -242,12 +242,17 @@ public class Canada
             {
                 prov.add(province.getName());
             }
-            else{
-                return null;
-            }
-            return prov;
+            
+            
         }        
-
+        
+        if (prov.size() > 0)
+        {
+            return prov;
+        }
+        else {
+            return null;
+        }
     }
     
     /**
