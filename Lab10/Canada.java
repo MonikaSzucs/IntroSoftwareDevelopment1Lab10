@@ -179,30 +179,46 @@ public class Canada
      * @param   substring   Substring to search for in the name of province or territory
      * @return  Array of provinces or territories names with the substring in their names
      */
-    public ProvinceTerritory[] getProvincesWhoseNameContains(String substring)
+    public String[] getProvincesWhoseNameContains(String substring)
     {
         if (substring == null || substring.equals("")) {
             throw new IllegalArgumentException("Invalid string");
         }
         
-        ProvinceTerritory[] containingString;
+        int i = 0;
+        int j = 0;
+        int numOfProvContainingString = 0;
+        String[] containingString;
         
         for(ProvinceTerritory province : provinces)
         {
             if ( province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
             {
-                ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(substring));
+                numOfProvContainingString++;
             }
+            i++;
         }
 
-        if (arrayList.size() > 0)
+        if (numOfProvContainingString > 0)
         {
-            return containingString;
+            containingString = new String[numOfProvContainingString];
         }
         else {
             return null;
         }
-    
+
+        i = 0 ;  
+        for(ProvinceTerritory province : provinces)
+        {
+            if (province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
+            {
+                containingString[j] = province.getName();
+                j++;
+            }
+            i++;
+        }
+
+        return containingString;
     }
     
     /**
@@ -217,45 +233,21 @@ public class Canada
             throw new IllegalArgumentException("Invalid string");
         }
         
-        int i = 0;
-        int j = 0;
-        int numOfProvContainString = 0;
-        ArrayList<ProvinceTerritory> prov;
-        
-        prov = new ArrayList<>();
+        ArrayList<ProvinceTerritory> prov = new ArrayList<>();
         
 
-        for(ProvinceTerritory province : provinces)
-        {
-            if (province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
-            {
-                numOfProvContainString++;
-            }
-            i++;
-        }        
-
-        /**
-        if (numOfProvContainString > 0)
-        {
-            prov = new ProvinceTerritory(numOfProvContainString);
-        }
-        else {
-            return null;
-        }
-        */
-       
-        i = 0 ;  
         for(ProvinceTerritory province : provinces)
         {
             if (province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
             {
                 prov.add(province.getName());
-                j++;
             }
-            i++;
-        }            
-        
-        return prov;
+            else{
+                return null;
+            }
+            return prov;
+        }        
+
     }
     
     /**
