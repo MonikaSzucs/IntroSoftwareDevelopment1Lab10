@@ -163,7 +163,7 @@ public class Canada
 
         for(ProvinceTerritory province : provinces)
         {
-            if ( province != null && province.getName().equalsIgnoreCase(name))
+            if ( province != null && province.equals("") && province.getName().equalsIgnoreCase(name))
             {
                 isProvinceInCanada = true;
             }
@@ -227,7 +227,7 @@ public class Canada
      * @param   substring   Substring to search for in the name of province or territory
      * @return  Array of provinces or territories with the substring in their names
      */
-    public ProvinceTerritory[] getMoreProvincesWhoseNameContains(String substring)
+    public ArrayList<ProvinceTerritory> getMoreProvincesWhoseNameContains(String substring)
     {
         if (substring == null || substring.equals("")) {
             throw new IllegalArgumentException("Invalid string");
@@ -236,7 +236,10 @@ public class Canada
         int i = 0;
         int j = 0;
         int numOfProvContainString = 0;
-        ProvinceTerritory[] containString;
+        ArrayList<ProvinceTerritory> prov;
+        
+        prov = new ArrayList<>();
+        
 
         for(ProvinceTerritory province : provinces)
         {
@@ -247,26 +250,28 @@ public class Canada
             i++;
         }        
 
+        /**
         if (numOfProvContainString > 0)
         {
-            containString = new ProvinceTerritory[numOfProvContainString];
+            prov = new ProvinceTerritory(numOfProvContainString);
         }
         else {
             return null;
         }
-
+        */
+       
         i = 0 ;  
         for(ProvinceTerritory province : provinces)
         {
-            if ( province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
+            if (province != null && province.getName().toLowerCase().contains(substring.toLowerCase()))
             {
-                containString[j] = new ProvinceTerritory(province.getName() , province.getPopulation());
+                prov.add(province.getName());
                 j++;
             }
             i++;
         }            
         
-        return containString;
+        return prov;
     }
     
     /**
@@ -314,7 +319,8 @@ public class Canada
         }
 
         return startingWithChar;
-    }    
+    }
+   
 
 }
 
