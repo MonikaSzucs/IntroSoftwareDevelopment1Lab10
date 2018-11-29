@@ -322,7 +322,7 @@ public class Canada
         {
             if ( province != null && province.getName().toLowerCase().charAt(0) == Character.toLowerCase(letter))
             {
-                prov.add(province);
+                prov.add(province.getName());
             }
             
         }
