@@ -202,8 +202,7 @@ public class Canada
         else {
             return null;
         }
-        
-        return containingString;
+    
     }
     
     /**
