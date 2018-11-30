@@ -1,8 +1,8 @@
 /**
  * Class Canada contains the provinces and territories, and their population.
  *
- * @author  Joe Developer
- * @version 1.0
+ * @author  Monika Szucs
+ * @version November 29, 2018
  */
 import java.util.ArrayList;
 
@@ -253,56 +253,7 @@ public class Canada
             return null;
         }
     }
-    
-    /**
-     * Gets all provinces that starts with the given letter.
-     * 
-     * @param   letter  Letter by which province or territory name starts with
-     * @return  Array containing the provinces or territories whose name start with a specific letter
-     */
-    
-    /**
-    public String[] getProvincesWhoseNameStartsWith(char letter)
-    {
-        if (letter == ' ' || letter == '\0') {
-            throw new IllegalArgumentException("Invalid letter");
-        }
-            
-        
-        int j = 0;
-        int numOfProvStartingWith = 0;
-        String[] startingWithChar;
 
-        for(ProvinceTerritory province : provinces)
-        {
-            if ( province != null && province.getName().toLowerCase().charAt(0) == Character.toLowerCase(letter))
-            {
-                numOfProvStartingWith++;
-            }
-            
-        }
-
-        if (numOfProvStartingWith > 0)
-        {
-            startingWithChar = new String[numOfProvStartingWith];
-        }
-        else{
-            return null;
-        }
-        
-        for(ProvinceTerritory province : provinces)
-        {
-            if (province != null && province.getName().toLowerCase().charAt(0) == Character.toLowerCase(letter))
-            {
-                startingWithChar[j] = province.getName();
-                j++;
-            }
-            
-        }
-
-        return startingWithChar;
-    }
-    */
    
     /**
      * Gets all provinces that starts with the given letter.
