@@ -102,7 +102,7 @@ public class Canada
      * 
      * @return  Name of the province or territory with the lowest population
      */
-    public String getHighestPopulation()
+    public ProvinceTerritory getHighestPopulation()
     {
         /**
         int     highestPopulation = Integer.MIN_VALUE;
