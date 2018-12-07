@@ -104,10 +104,12 @@ public class Canada
      */
     public String getHighestPopulation()
     {
+        /**
         int     highestPopulation = Integer.MIN_VALUE;
         String  largestProvince = "";
         int     index = 0; 
-
+        */
+        /**
         for(ProvinceTerritory province : provinces)
         {
             if(province != null && province.getPopulation() > highestPopulation)
@@ -117,8 +119,21 @@ public class Canada
             }
             index++;
         }  
-
+        */
+        /**
         return largestProvince;
+        */
+        int highestPopulation = Ingeter.MIN_VALUE;
+        ProvinceTerritory biggestProvince = null;
+        
+        for(ProvinceTerritory eachProv : provinces){
+            if(eachPRov != null && eachProv.getPopulation() > highestPopulation){
+                highestPopulation = eachProv.getPopulation();
+                biggestProvince = eachProv;
+            }
+        }
+        return biggestProvince;
+        
     }
     
     /**
